@@ -1,10 +1,17 @@
 <template>
 	<view class="wrap">
 		<u-swiper :effect3d="true" :list="list"></u-swiper>
+		<view>
+			<button type="default" @click="login">登录</button>
+		</view>
+		<u-toast ref="uToast" />
 	</view>
 </template>
 
 <script>
+	import {
+		gets
+	} from '@/request/api';
 	export default {
 		data() {
 			return {
@@ -23,8 +30,23 @@
 				],
 			}
 		},
+		onLoad() {
+			this.getlist()
+		},
 		methods: {
-
+			getlist() {
+				gets().then((res) => {
+					console.log(res);
+				})
+			},
+			// gets = () =>get('artcle/content/list?pageNum=1&pageSize=10');
+			login() {
+				uni.navigateTo({
+					url:"../../login/login",
+					animationType:"slide-in-bottom",
+					animationDuration:300
+				})
+			}
 		}
 	}
 </script>

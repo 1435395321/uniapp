@@ -1,8 +1,0 @@
-{
-  "navigationBarTitleText": "首页",
-  "navigationBarBackgroundColor": "#ffaaff",
-  "navigationBarTextStyle": "white",
-  "usingComponents": {
-    "u-swiper": "/node-modules/uview-ui/components/u-swiper/u-swiper"
-  }
-}
