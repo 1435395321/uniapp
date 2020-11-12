@@ -7,7 +7,7 @@ Vue.use(uView);
 import store from './store'
 
 // 公用js 
-import common from 'commoen/index.js'
+import common from 'common/index.js'
 //把vuex定义成全局组件
 Vue.prototype.$store = store
 

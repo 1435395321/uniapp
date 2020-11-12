@@ -11,4 +11,10 @@
 		font-family: cursive;
 		font-size: 30rpx;
 	}
+	.wrap{
+		width: 96%;
+		margin: 0 auto;
+		overflow: hidden;
+		box-sizing: border-box;
+	}
 </style>
