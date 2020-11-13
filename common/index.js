@@ -6,7 +6,7 @@ Vue.prototype.popUpTab = function(title, type, tab = false, url = "") {
 	this.$refs.uToast.show({
 		title: title,
 		type: type,
-		duration: 1000,
+		duration: 1500,
 		icon: true,
 		isTab: tab,
 		callback: () => {
