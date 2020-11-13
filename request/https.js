@@ -17,7 +17,7 @@ if (process.env.NODE_ENV == 'development') {
 	axios.defaults.baseURL = 'https://1.71.190.188:14200/api/';
 }
 
-axios.defaults.timeout = 10000;
+axios.defaults.timeout = 1000;
 // post请求头的设置
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8'
 // 请求拦截器
