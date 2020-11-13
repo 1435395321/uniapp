@@ -1,17 +1,21 @@
 <template>
 	<view class="wrap">
-		<u-swiper :effect3d="true" :list="list"></u-swiper>
-		<view>
-			<button type="default" @click="login">登录</button>
+		<u-swiper :effect3d="true" :list="list" height=400 ></u-swiper>
+		<view class="more">
+			<u-section class="more-title" title="消费账单" font-size="40" sub-title="查看更多" @click="more"></u-section>
+			<view class="more-list">
+				<text>djfdkj倒海翻江看</text>
+				<text>2020-10-15</text>
+			</view>
+		</view>
+		<view class="submit">
+			<button type="default" @click="login">登录账户</button>
 		</view>
 		<u-toast ref="uToast" />
 	</view>
 </template>
 
 <script>
-	import {
-		gets
-	} from '@/request/api';
 	export default {
 		data() {
 			return {
@@ -30,21 +34,20 @@
 				],
 			}
 		},
-		onLoad() {
-			this.getlist()
-		},
+		onLoad() {},
 		methods: {
-			getlist() {
-				gets().then((res) => {
-					console.log(res);
+			getlist() {},
+			// 查看更多
+			more() {
+				uni.navigateTo({
+					url:'../../more/more'
 				})
 			},
-			// gets = () =>get('artcle/content/list?pageNum=1&pageSize=10');
 			login() {
 				uni.navigateTo({
-					url:"../../login/login",
-					animationType:"slide-in-bottom",
-					animationDuration:300
+					url: "../../login/login",
+					animationType: "slide-in-bottom",
+					animationDuration: 300
 				})
 			}
 		}
@@ -53,6 +56,24 @@
 
 <style scoped lang="scss">
 	.wrap {
-		padding: 40rpx;
+		padding: 10rpx;
+	}
+
+	.submit {
+		margin-top: 80rpx;
+	}
+
+	.more {
+		margin-top: 40rpx;
+		font-size: 30rpx;
+	}
+	.more-list{
+		width: 100%;
+		line-height:80rpx;
+		display: flex;
+		justify-content: space-between;
+		font-size: 32rpx;
+		border-bottom: 1px solid #ccc;
+		
 	}
 </style>

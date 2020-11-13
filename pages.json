@@ -4,6 +4,14 @@
 	},
 	"pages": [ 
 		{
+			"path": "pages/login/login",
+			"style": {
+				"navigationBarBackgroundColor": "#ffaaff",
+				"navigationBarTextStyle": "white",
+				"navigationBarTitleText": "登录"
+			}
+		},
+		{
 			"path": "pages/tabBar/home/home",
 			"style": {
 				"navigationBarTitleText": "首页",
@@ -20,11 +28,27 @@
 			}
 		},
 		{
-			"path": "pages/login/login",
+			"path": "pages/tabBar/mine/mine",
 			"style": {
 				"navigationBarBackgroundColor": "#ffaaff",
 				"navigationBarTextStyle": "white",
-				"navigationBarTitleText": "登录"
+				"navigationBarTitleText": "个人中心"
+			}
+		},
+		{
+			"path": "pages/more/more",
+			"style": {
+				"navigationBarBackgroundColor": "#ffaaff",
+				"navigationBarTextStyle": "white",
+				"navigationBarTitleText": "信息"
+			}
+		},
+		{
+			"path": "pages/more/moreInfo",
+			"style": {
+				"navigationBarBackgroundColor": "#ffaaff",
+				"navigationBarTextStyle": "white",
+				"navigationBarTitleText": "信息"
 			}
 		}
 	],
@@ -51,6 +75,12 @@
 				"iconPath": "static/image/list1.png",
 				"selectedIconPath": "static/image/list.png",
 				"text": "次页"
+			},
+			{
+				"pagePath": "pages/tabBar/mine/mine",
+				"iconPath": "static/image/list1.png",
+				"selectedIconPath": "static/image/list.png",
+				"text": "个人中心"
 			}
 		]
 	}
