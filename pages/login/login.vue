@@ -9,13 +9,21 @@
 					<u-input v-model="form.password" />
 				</u-form-item>
 			</u-form>
-			<u-button @click="submit" class="custom-style" size="medium" :ripple="true" ripple-bg-color="#4cacff" shape="circle">登录</u-button>
-			<u-toast ref="uToast" />
+			<u-button @click="submit" class="custom-style" size="medium" :ripple="true" ripple-bg-color="#4cacff">登录</u-button>
+			<view class="u-flex u-row-between">
+				<view>修改密码</view>
+				<view>注册账号</view>
+			</view>
 		</view>
+		<u-toast ref="uToast" />
 	</view>
 </template>
 
 <script>
+	import {
+		mapState,
+		mapMutations
+	} from 'vuex'
 	export default {
 		data() {
 			return {
@@ -38,15 +46,27 @@
 				}
 			};
 		},
+		computed: {
+			...mapState(['token'])
+		},
 		// 必须要在onReady生命周期，因为onLoad生命周期组件可能尚未创建完毕
 		onReady() {
 			this.$refs.uForm.setRules(this.rules);
 		},
 		methods: {
+			...mapMutations(['setToKen']),
 			submit() {
+				console.log(this.token)
 				this.$refs.uForm.validate(valid => {
 					if (valid) {
-						this.popUpTab('登录成功', 'success', true, '/pages/tabBar/home/home');
+						this.popUpTab('登录成功', 'success');
+						let token = 'C';
+						this.setToKen(token);
+						// setTimeout(() => {
+						// 	uni.reLaunch({
+						// 		url: '../tabBar/home/home'
+						// 	})
+						// }, 1000)
 					} else {
 						console.log('验证失败');
 					}
@@ -71,8 +91,9 @@
 		background-color: rgb(255, 170, 255);
 		color: #fff;
 		display: block;
-		width: 40%;
-		margin: 20rpx auto;
+		width: 70%;
+		margin: 40rpx auto;
 		font-size: 30rpx;
+		border-radius: 15rpx;
 	}
 </style>
