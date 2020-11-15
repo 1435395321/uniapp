@@ -1,16 +1,19 @@
 <template>
 	<view class="wrap">
-		<view class="more-list" @click="more">
-			<text>djfdkj倒海翻江看</text>
-			<text>2020-10-15</text>
-		</view>
+		<my-list></my-list>
 	</view>
 </template>
 
 <script>
-	import more from '../common/more/more.vue'
+	import list from '../common/list/list.vue';
+	import {mapState} from 'vuex';
 	export default {
-		
+		computed: {
+			...mapState(['listData'])
+		},
+		components:{
+			'my-list': list
+		},
 		methods:{
 			more(){
 				uni.navigateTo({
@@ -29,6 +32,12 @@
 		justify-content: space-between;
 		font-size: 32rpx;
 		border-bottom: 1px solid #ccc;
-		
+		.more-remark{
+			width: 70%;
+			height: 80rpx;
+			overflow: hidden;
+			white-space:nowrap;
+			text-overflow:ellipsis;
+		}
 	}
 </style>

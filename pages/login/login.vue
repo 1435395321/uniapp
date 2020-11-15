@@ -10,6 +10,7 @@
 					<u-form-item label="密码" prop="password">
 						<u-input type="password" v-model="form.password" />
 					</u-form-item>
+					{{token}}
 				</u-form>
 				<u-button @click="submit" class="custom-style" size="medium" :ripple="true" ripple-bg-color="#4cacff">登录</u-button>
 				<view class="u-flex u-row-between">
@@ -118,14 +119,13 @@
 				this.$refs.uForm.validate(valid => {
 					if (valid) {
 						this.popUpTab('登录成功', 'success');
-						let token = 'C';
+						let token = 'hjdhfksdhkjdhfk';
 						this.setToKen(token);
-						
-						// setTimeout(() => {
-						// 	uni.reLaunch({
-						// 		url: '../tabBar/home/home'
-						// 	})
-						// }, 1000)
+						setTimeout(() => {
+							uni.reLaunch({
+								url: '../tabBar/home/home'
+							})
+						}, 1000)
 					} else {
 						this.popUpTab('验证失败', 'error');
 					}

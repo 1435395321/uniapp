@@ -1,18 +1,23 @@
 export default {
+	/*
+	* 设置token
+	*/
 	setToKen(state, newtoken) {
-		switch (newtoken) {
-			case "A":
-				state.token = "A下Token";
-				break;
-			case "B":
-				state.token = "B下Token";
-				break;
-			case "C":
-				state.token = "C下Token";
-				break;
-			default:
-				state.token = '默认TOken';
-				break;
+		state.token = newtoken;
+	},
+	/*
+	* 退出Token
+	* */
+	logToken(state) {
+		state.token = '';
+	},
+	// 根据 id  搜查数据
+	searchData(state,id) {
+		const i = state.listData.findIndex(x => x.id === id);
+		console.log(333)
+		if (i!==-1){
+			state.listData.slice(id-1,id)
+			
 		}
 	}
 }

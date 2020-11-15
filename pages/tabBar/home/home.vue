@@ -2,11 +2,10 @@
 	<view class="wrap">
 		<u-swiper :effect3d="true" :list="list" height=400 ></u-swiper>
 		<view class="more">
-			<u-section class="more-title" title="消费账单" font-size="40" sub-title="查看更多" @click="more"></u-section>
-			<view class="more-list">
-				<text>djfdkj倒海翻江看</text>
-				<text>2020-10-15</text>
-			</view>
+			<u-section class="more-title" title="本日账单" font-size="40" sub-title="查看更多" @click="more"></u-section>
+			<my-list>
+				<slot></slot>
+			</my-list>
 		</view>
 		<view class="submit">
 			<button type="default" @click="login">登录账户</button>
@@ -16,7 +15,15 @@
 </template>
 
 <script>
+	import list from '../../common/list/list.vue';
+	import { mapState } from 'vuex'
 	export default {
+		components:{
+			'my-list': list
+		},
+		computed:{
+			...mapState(['listData'])
+		},
 		data() {
 			return {
 				list: [{
@@ -67,13 +74,5 @@
 		margin-top: 40rpx;
 		font-size: 30rpx;
 	}
-	.more-list{
-		width: 100%;
-		line-height:80rpx;
-		display: flex;
-		justify-content: space-between;
-		font-size: 32rpx;
-		border-bottom: 1px solid #ccc;
-		
-	}
+	
 </style>

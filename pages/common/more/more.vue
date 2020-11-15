@@ -1,5 +1,5 @@
 <template>
-	<view class="wrap">
+	<view class="wrap">	
 		<view class="">日期：2020-02-08</view>
 		<view>金额：20元</view>
 		<view>类型</view>
