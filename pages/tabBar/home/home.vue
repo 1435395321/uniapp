@@ -1,6 +1,7 @@
 <template>
 	<view class="wrap">
-		<u-swiper :effect3d="true" :list="list" height=400 ></u-swiper>
+		<u-swiper :effect3d="true" :list="list" height=400></u-swiper>
+		<input type="text" v-model="seachData" @input="handlinput" style="width: 80%;height: 60rpx;margin: 20rpx;border: 1px solid #ccc;" />
 		<view class="more">
 			<u-section class="more-title" title="本日账单" font-size="40" sub-title="查看更多" @click="more"></u-section>
 			<my-list>
@@ -16,16 +17,19 @@
 
 <script>
 	import list from '../../common/list/list.vue';
-	import { mapState } from 'vuex'
+	import {
+		mapState
+	} from 'vuex'
 	export default {
-		components:{
+		components: {
 			'my-list': list
 		},
-		computed:{
+		computed: {
 			...mapState(['listData'])
 		},
 		data() {
 			return {
+				seachData: '',
 				list: [{
 						image: '/static/image/banner/lol3.jpg',
 						title: '昨夜星辰昨夜风，画楼西畔桂堂东'
@@ -43,11 +47,16 @@
 		},
 		onLoad() {},
 		methods: {
+			handlinput(e) {
+				var newarr = this.listData.filter((item) => {
+
+				})
+			},
 			getlist() {},
 			// 查看更多
 			more() {
 				uni.navigateTo({
-					url:'../../more/more'
+					url: '../../more/more'
 				})
 			},
 			login() {
@@ -74,5 +83,4 @@
 		margin-top: 40rpx;
 		font-size: 30rpx;
 	}
-	
 </style>
