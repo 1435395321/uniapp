@@ -20,6 +20,7 @@
 	import {
 		mapState
 	} from 'vuex'
+	import { List } from '../../../request/api.js'
 	export default {
 		components: {
 			'my-list': list
@@ -29,6 +30,7 @@
 		},
 		data() {
 			return {
+				shopList:[],
 				seachData: '',
 				list: [{
 						image: '/static/image/banner/lol3.jpg',
@@ -45,14 +47,21 @@
 				],
 			}
 		},
-		onLoad() {},
+		onLoad() {
+			this.getlist();
+		},
 		methods: {
 			handlinput(e) {
 				var newarr = this.listData.filter((item) => {
-
+					
 				})
 			},
-			getlist() {},
+			getlist() {
+				List({user_id:2}).then(res => {
+					this.$store.state.listData = res.data
+					console.log(this.$store.state.listData)
+				})
+			},
 			// 查看更多
 			more() {
 				uni.navigateTo({

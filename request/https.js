@@ -4,19 +4,15 @@ import QS from 'qs'; // 引入qs模块，用来序列化post类型的数据，�
 // vuex的路径根据自己的路径去写
 import store from '@/store/index';
 
-const _this = this;
 // 环境的切换
-if (process.env.NODE_ENV == 'development') {
-	console.log(1)
-	axios.defaults.baseURL = 'https://1.71.190.188:14200/api/';
-} else if (process.env.NODE_ENV == 'debug') {
-	console.log(2)
-	axios.defaults.baseURL = 'https://1.71.190.188:14200/api/';
-} else if (process.env.NODE_ENV == 'production') {
-	console.log(3)
-	axios.defaults.baseURL = 'https://1.71.190.188:14200/api/';
-}
-
+// if (process.env.NODE_ENV == 'development') {
+// 	axios.defaults.baseURL = 'http://119.45.160.45/api/';
+// } else if (process.env.NODE_ENV == 'debug') {
+// 	axios.defaults.baseURL = 'http://119.45.160.45/api/';
+// } else if (process.env.NODE_ENV == 'production') {
+// 	axios.defaults.baseURL = 'http://119.45.160.45/api/';
+// }
+axios.defaults.baseURL = '/dpc';
 axios.defaults.timeout = 1000;
 // post请求头的设置
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8'
@@ -51,13 +47,14 @@ axios.interceptors.response.use(
 	// 下面列举几个常见的操作，其他需求可自行扩展
 	error => {
 		if (error.response.status) {
-			console.log(error.response.status)
+			// console.log(uni.$u.toast)
+			
 			switch (error.response.status) {
 				// 401: 未登录
 				// 未登录则跳转登录页面，并携带当前页面的路径
 				// 在登录成功后返回当前页面，这一步需要在登录页操作。                
 				case 401:
-					_this.popUpTab('请先登录', 'success', false, '/page/login/login');
+				console.log(22)
 					break;
 					// 403 token过期
 					// 登录过期对用户进行提示
@@ -96,13 +93,15 @@ axios.interceptors.response.use(
 					uni.showToast({
 						message: "网络请求不",
 						duration: 1500,
+						icon:none
 					});
 					break;
 					// 其他错误，直接抛出错误提示
 				default:
 					uni.showToast({
-						message: error.response.data.message,
+						message: '123456',
 						duration: 1500,
+						icon:none
 					});
 			}
 			return Promise.reject(error.response);

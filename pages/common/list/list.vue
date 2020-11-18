@@ -1,8 +1,8 @@
 <template>
 	<view class="">
 		<view class="more-list" v-for="(item,index) in listData" :key="item.id" @click="more(item.id)">
-			<text class="more-remark">{{item.remark}}</text>
-			<text>{{item.createDate}}</text>
+			<text class="more-remark">{{item.comment}}</text>
+			<text>{{item.transaction_time}}</text>
 		</view>
 	</view>
 	
@@ -38,7 +38,7 @@
 		font-size: 32rpx;
 		border-bottom: 1px solid #ccc;
 		.more-remark{
-			width: 70%;
+			width: 52%;
 			height: 80rpx;
 			overflow: hidden;
 			white-space:nowrap;
