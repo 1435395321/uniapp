@@ -1,11 +1,11 @@
 <template>
 	<view class="wrap">
-		<view class="">日期：{{list.createDate}}</view>
-		<view>金额：{{list.monry}}元</view>
-		<view>类型 id{{list.id}}</view>
+		<view class="">日期：{{list.transaction_time}}</view>
+		<view>金额：{{list.price}}元</view>
+		<view>类型 id{{list.pay_type_n}}</view>
 		<view>
 			<view>备注：</view>
-			<view class="more-text">{{list.remark}}</view>
+			<view class="more-text">{{list.comment}}</view>
 		</view>
 	</view>
 </template>
@@ -30,10 +30,9 @@
 					this.list = this.listData[i]
 				}
 			}
+			console.log(this.list)
 		},
 		methods: {
-			
-
 		}
 	}
 </script>

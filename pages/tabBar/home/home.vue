@@ -1,7 +1,6 @@
 <template>
 	<view class="wrap">
 		<u-swiper :effect3d="true" :list="list" height=400></u-swiper>
-		<input type="text" v-model="seachData" @input="handlinput" style="width: 80%;height: 60rpx;margin: 20rpx;border: 1px solid #ccc;" />
 		<view class="more">
 			<u-section class="more-title" title="本日账单" font-size="40" sub-title="查看更多" @click="more"></u-section>
 			<my-list>
@@ -18,9 +17,12 @@
 <script>
 	import list from '../../common/list/list.vue';
 	import {
-		mapState
+		mapState,
+		mapMutations
 	} from 'vuex'
-	import { List } from '../../../request/api.js'
+	import {
+		List
+	} from '../../../request/api.js'
 	export default {
 		components: {
 			'my-list': list
@@ -30,7 +32,6 @@
 		},
 		data() {
 			return {
-				shopList:[],
 				seachData: '',
 				list: [{
 						image: '/static/image/banner/lol3.jpg',
@@ -51,15 +52,12 @@
 			this.getlist();
 		},
 		methods: {
-			handlinput(e) {
-				var newarr = this.listData.filter((item) => {
-					
-				})
-			},
+			...mapMutations(['search']),	
 			getlist() {
-				List({user_id:2}).then(res => {
+				List({
+					user_id: 2
+				}).then(res => {
 					this.$store.state.listData = res.data
-					console.log(this.$store.state.listData)
 				})
 			},
 			// 查看更多
